@@ -1,4 +1,3 @@
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -8,17 +7,12 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class NumberDividerTest {
 
-    NumberDivider numberDivider;
+    NumberDivider numberDivider = new NumberDivider();
 
-    @BeforeEach
-    public void setUp() {
-        numberDivider = new NumberDivider(LocalTime.NOON, LocalTime.MIDNIGHT);
-    }
-
-    @Test
-    public void divideStatusTest() {
-        assertTrue(numberDivider.isActive(LocalTime.NOON));
-    }
+//    @Test
+//    public void divideStatusTest() {
+//        assertTrue(numberDivider.isActive(LocalTime.NOON));
+//    }
 
     @Test
     public void divideFiniteNonZeroByZeroTest() {
@@ -39,7 +33,9 @@ class NumberDividerTest {
     }
 
     @Test
-    public void divideZeroByZeroTest() {}
+    public void divideZeroByZeroTest() {
+        assertTrue(Double.isNaN(numberDivider.divide(0.0, 0.0)));
+    }
 
     @Test
     public void divideByOneTest() {
